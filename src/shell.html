@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>节点式分析工具 · 可复算的分析地图</title>
+<style>/*__CSS__*/</style>
+</head>
+<body>
+<div id="app">
+  <header id="toolbar">
+    <div class="brand"><span class="brand-dot"></span>节点式分析工具<span class="brand-sub">可复算 spec + 结论</span></div>
+    <button id="btnImport" class="tb">导入表格</button>
+    <button id="btnSample" class="tb">样例数据</button>
+    <button id="btnEngine" class="tb">引擎 v0</button>
+    <button id="btnHelp" class="tb help" title="使用说明">? 说明</button>
+    <span id="dataState" class="tb-state">暂无数据</span>
+    <div class="tb-spacer"></div>
+    <input id="search" class="tb-search" placeholder="搜节点" autocomplete="off">
+    <button id="btnMemory" class="tb">记忆</button>
+    <button id="btnTidy" class="tb">一键整理</button>
+    <button id="btnNew" class="tb primary">+ 新建节点</button>
+    <button id="btnExport" class="tb">导出</button>
+    <button id="btnReset" class="tb danger">重置</button>
+  </header>
+  <div id="main">
+    <aside id="left">
+      <section id="chat">
+        <div class="pane-head"><span>对话 · 提问</span><span id="chatHint" class="pane-hint">用日常语言描述分析意图</span></div>
+        <div id="chatLog"></div>
+        <div id="quickAsk">
+          <div class="qa-label">不知道问什么？点一句试试（没数据时会自动载入样例）</div>
+          <div class="qa-chips">
+            <button data-q="各品牌对局人次排名如何？">品牌排名</button>
+            <button data-q="渠道转化率对比">渠道对比</button>
+            <button data-q="各月对局人次趋势">月度趋势</button>
+            <button data-q="各品牌对局人次占比">品牌占比</button>
+          </div>
+        </div>
+        <div id="chatInput">
+          <textarea id="q" rows="2" placeholder="例如：各品牌对局人次排名如何？"></textarea>
+          <button id="ask" title="发送">➤</button>
+        </div>
+      </section>
+      <section id="detail">
+        <div class="pane-head"><span>节点详情</span><span id="detailClose" class="pane-hint">×</span></div>
+        <div id="detailBody"><div class="empty">选择一个节点查看字段口径、图表与结论</div></div>
+      </section>
+    </aside>
+    <div id="canvasWrap">
+      <div id="canvas">
+        <svg id="edges"></svg>
+        <div id="groups"></div>
+        <div id="nodes"></div>
+        <div id="floatAsk" class="hidden"></div>
+      </div>
+      <div id="canvasHint">第一次用？<a id="hintGuide">点这里看 3 步上手</a><br><span>分支会随着你的提问生长出来</span></div>
+      <div id="zoomBar"><button id="zoomOut">−</button><span id="zoomVal">100%</span><button id="zoomIn">+</button><button id="zoomFit">适配</button></div>
+      <div id="suggestBar" class="hidden"></div>
+    </div>
+  </div>
+  <div id="guide" class="hidden">
+    <div class="g-head"><b>第一次用？跟着点 3 下</b><span id="guideX" title="关闭">×</span></div>
+    <div id="guideBody"></div>
+    <div id="guideFoot"></div>
+  </div>
+  <div id="toast"></div>
+  <div id="modal" class="hidden"></div>
+  <input type="file" id="fileInput" accept=".csv,.tsv,.txt,.json" class="hidden">
+</div>
+<script>/*__JS__*/</script>
+</body>
+</html>
